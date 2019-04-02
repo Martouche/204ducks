@@ -81,7 +81,7 @@ def print_function(tab):
         print("Time after which 99% of the ducks are back: ",tab[5], "m 0",tab[6], "s", sep="")
     else:
         print("Time after which 99% of the ducks are back: ",tab[5], "m ",tab[6], "s", sep="")
-    print("Percentage of ducks back after 1 minute: ", round(tab[7], 1),"%", sep="")
+    print("Percentage of ducks back after 1 minute: ", format(tab[7],".1f"),"%", sep="")
     print("Percentage of ducks back after 2 minutes: ", round(tab[8], 1),"%", sep="")
 
 def main():
