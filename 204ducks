@@ -59,7 +59,7 @@ def GetTime(t, tab):
     m = int(t / 60)
     s = t - (m * 60)
     tab.append(m)
-    tab.append(int(s))
+    tab.append(s)
 
 def average_time(a):
     tab = []
@@ -74,13 +74,13 @@ def print_function(tab):
     print("Average return time: ",tab[0], "m ", int(tab[1]), "s", sep="")
     print("Standard deviation: ", format(tab[2], ".3f"), sep="")
     if (tab[4] < 10):
-        print("Time after which 50% of the ducks are back: ", tab[3], "m 0", tab[4], "s",sep="")
+        print("Time after which 50% of the ducks are back: ", tab[3], "m 0", format(tab[4], ".0f"), "s",sep="")
     else:
-        print("Time after which 50% of the ducks are back: ", tab[3], "m ", tab[4], "s",sep="")
+        print("Time after which 50% of the ducks are back: ", tab[3], "m ", format(tab[4], ".0f"), "s",sep="")
     if (tab[6] < 10):
-        print("Time after which 99% of the ducks are back: ",tab[5], "m 0",tab[6], "s", sep="")
+        print("Time after which 99% of the ducks are back: ",tab[5], "m 0",format(tab[6], ".0f"), "s", sep="")
     else:
-        print("Time after which 99% of the ducks are back: ",tab[5], "m ",tab[6], "s", sep="")
+        print("Time after which 99% of the ducks are back: ",tab[5], "m ",format(tab[6], ".0f"), "s", sep="")
     print("Percentage of ducks back after 1 minute: ", format(tab[7],".1f"),"%", sep="")
     print("Percentage of ducks back after 2 minutes: ", round(tab[8], 1),"%", sep="")
 
