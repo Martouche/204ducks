@@ -67,7 +67,7 @@ def average_time(a):
     min = floor(res)
     sec = (res - min) * 60
     tab.append(min)
-    tab.append(round(sec, 2))
+    tab.append(round(sec, 1))
     return tab
 
 def print_function(tab):
