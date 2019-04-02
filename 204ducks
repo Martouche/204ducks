@@ -25,18 +25,72 @@ def error_handling():
         sys.exit(84)
     return first
 
+def average(a):
+    res = (3 * ( a + 2)) / 8
+    return (res)
+
+def variance(a):
+    calc = (7 / 16) * (3 * a + 2) - (average(a) * average(a))
+    return sqrt(calc)
+
+def calcul_prim(a, t):
+	calc = (1/2) * exp(-4 * t) * (exp(t) - 1)**2 * (2 * (exp(t) + 1)**2 - a * (2 * exp(t) + 1))
+	return calc
+
+def get_pourc_timer(step, a):
+	t = 0
+	res = 0
+	while 1:
+		res = calcul_prim(a, t / 60)
+		if (res >= step):
+			return t
+		t += 0.01
+
+def get_pourc(step, a, tab):
+	t = 0
+	res = 0
+	while 1:
+		res = calcul_prim(a, t)
+		if (t >= step):
+			return res * 100
+		t += 0.01
+
+def GetTime(t, tab):
+    m = int(t / 60)
+    s = t - (m * 60)
+    tab.append(m)
+    tab.append(int(s))
+
 def average_time(a):
     tab = []
     res = (3 * ( a + 2)) / 8
     min = floor(res)
     sec = (res - min) * 60
     tab.append(min)
-    tab.append(sec)
+    tab.append(int(sec))
     return tab
+
+def print_function(tab):
+    print("Average return time: ",tab[0], "m ", tab[1], "s", sep="")
+    print("Standard deviation: ", format(tab[2], ".3f"), sep="")
+    if (tab[4] < 10):
+        print("Time after which 50% of the ducks are back: ", tab[3], "m 0", tab[4], "s",sep="")
+    else:
+        print("Time after which 50% of the ducks are back: ", tab[3], "m ", tab[4], "s",sep="")
+    if (tab[6] < 10):
+        print("Time after which 99% of the ducks are back: ",tab[5], "m 0",tab[6], "s", sep="")
+    else:
+        print("Time after which 99% of the ducks are back: ",tab[5], "m ",tab[6], "s", sep="")
+
 
 def main():
     arg = error_handling()
     tab = average_time(arg)
-    print(tab)
+    tab.append(variance(arg))
+    GetTime(get_pourc_timer(0.50, arg), tab)
+    GetTime(get_pourc_timer(0.99, arg), tab)
+    tab.append(get_pourc(1, arg, tab))
+    tab.append(get_pourc(2, arg, tab))
+    print_function(tab)
 
 main()
