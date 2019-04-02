@@ -71,7 +71,7 @@ def average_time(a):
     return tab
 
 def print_function(tab):
-    print("Average return time: ",tab[0], "m ", int(tab[1]), "s", sep="")
+    print("Average return time: ",tab[0], "m ", format(tab[1], ".0f"), "s", sep="")
     print("Standard deviation: ", format(tab[2], ".3f"), sep="")
     if (tab[4] < 10):
         print("Time after which 50% of the ducks are back: ", tab[3], "m 0", format(tab[4], ".0f"), "s",sep="")
