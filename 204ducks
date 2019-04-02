@@ -21,7 +21,7 @@ def error_handling():
     except:
         print_help()
         sys.exit(84)
-    if (first < 0):
+    if (first < 0 or first > 2.5):
         sys.exit(84)
     return first
 
@@ -67,11 +67,11 @@ def average_time(a):
     min = floor(res)
     sec = (res - min) * 60
     tab.append(min)
-    tab.append(int(sec))
+    tab.append(round(sec, 2))
     return tab
 
 def print_function(tab):
-    print("Average return time: ",tab[0], "m ", tab[1], "s", sep="")
+    print("Average return time: ",tab[0], "m ", int(tab[1]), "s", sep="")
     print("Standard deviation: ", format(tab[2], ".3f"), sep="")
     if (tab[4] < 10):
         print("Time after which 50% of the ducks are back: ", tab[3], "m 0", tab[4], "s",sep="")
